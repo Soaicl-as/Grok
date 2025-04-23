@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instagram DM Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Instagram DM Bot</h1>
+        <form action="/start_bot" method="post">
+            <label for="target_username">Target Username:</label>
+            <input type="text" id="target_username" name="target_username" required>
+            <label>Extract:</label>
+            <input type="radio" id="followers" name="extract_type" value="followers" checked>
+            <label for="followers">Followers</label>
+            <input type="radio" id="following" name="extract_type" value="following">
+            <label for="following">Following</label>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <label for="num_accounts">Number of Accounts:</label>
+            <input type="number" id="num_accounts" name="num_accounts" min="1" required>
+            <label for="delay">Delay (seconds):</label>
+            <input type="number" id="delay" name="delay" min="1" required>
+            <input type="submit" value="Start Bot">
+        </form>
+        <form action="/stop_bot" method="post">
+            <input type="submit" value="Stop Bot">
+        </form>
+        <h2>Live Logs</h2>
+        <div id="logs"></div>
+    </div>
+</body>
+</html>
